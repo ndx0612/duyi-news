@@ -112,25 +112,21 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ListItem = function ListItem() {__webpack_require__.e(/*! require.ensure | components/ArticleList/ListItem */ "components/ArticleList/ListItem").then((function () {return resolve(__webpack_require__(/*! ./ListItem.vue */ 87));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
-
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
 {
   props: {
     labelList: Array,
     activeIndex: Number },
-
-  components: {
-    ListItem: ListItem },
 
   data: function data() {
     return {};

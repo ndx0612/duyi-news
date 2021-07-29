@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "list-item": "/components/ArticleList/ListItem"
-  },
+  "usingComponents": {},
   "component": true
 }
