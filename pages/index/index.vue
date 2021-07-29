@@ -1,6 +1,6 @@
 <template>
 	<view class="home-container">
-		<NavBar ></NavBar>
+		<NavBar></NavBar>
 		<!-- 添加侧边栏 -->
 		<TabBar :labelList="labelList"></TabBar>
 	</view>
@@ -17,13 +17,9 @@
 			}
 		},
 		methods: {
-			_intiLabelList() {
-				uniCloud.callFunction({
-					name: "get_label_list",
-					success:(res)=> {
-						this.labelList = res.result.labelList
-					}
-				})
+			async _intiLabelList() {
+				const labelList = await this.$http.get_label_list()
+				this.labelList = labelList
 			}
 		},
 	}
