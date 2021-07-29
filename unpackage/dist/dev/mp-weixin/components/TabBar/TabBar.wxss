@@ -26,19 +26,37 @@
 /* 文章场景相关 */
 /* 添加一个flex布局的混编方法 */
 /* 全局系统样式定义 */
-page {
-  height: 100%;
+.tab {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  border-bottom: 1px #f5f5f5 solid;
+  background-color: #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
-.home-container {
-  overflow: hidden;
+.tab .tab-scroll {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  height: 90rpx;
+}
+.tab .tab-scroll .tab-scroll-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -50,19 +68,49 @@ page {
           justify-content: flex-start;
   -webkit-flex-wrap: nowrap;
           flex-wrap: nowrap;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: inherit;
-  -webkit-align-items: inherit;
-          align-items: inherit;
-}
-.list-container {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  height: 90rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+.tab .tab-scroll .tab-scroll-box .tab-scroll-item {
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
+  padding: 0 20rpx;
+  color: #333333;
+  font-size: 28rpx;
+}
+.tab .tab-scroll .tab-scroll-box .tab-scroll-item.active {
+  color: #f25037;
+}
+.tab .tab-icons {
+  width: 90rpx;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
+.tab .tab-icons:after {
+  content: "";
+  position: absolute;
+  height: 32rpx;
+  left: 0;
+  width: 2rpx;
+  background-color: #ddd;
 }
 
