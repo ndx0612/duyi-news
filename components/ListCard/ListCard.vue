@@ -1,0 +1,33 @@
+<template>
+	<view class="list-card">
+		<view class="list-card-img">
+			<image src="../../static/img/logo.jpeg" mode="aspectFill"></image>
+		</view>
+		<view class="list-card-content">
+			<view class="list-card-content-title">
+				<text>《故宫博物院》集训营直播课开讲啦（4月17号）</text>
+				<SaveLikes></SaveLikes>
+			</view>
+			<view class="list-card-content-desc">
+				v<view class="article-type">
+					
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		name:"ListCard",
+		data() {
+			return {
+				
+			};
+		}
+	}
+</script>
+
+<style>
+
+</style>
