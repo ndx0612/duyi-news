@@ -1,1 +1,0 @@
-<view class="list-scroll-container"><scroll-view class="list-scroll" scroll-y="true"><view><block wx:for="{{50}}" wx:for-item="item" wx:for-index="__i0__" wx:key="*this"><list-card vue-id="{{'0c02ea1f-1-'+__i0__}}" bind:__l="__l"></list-card></block></view></scroll-view></view>
