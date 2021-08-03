@@ -67,5 +67,8 @@
     },
     "uniStatistics" : {
         "enable" : false
+    },
+    "h5" : {
+        "template" : "index.html"
     }
 }

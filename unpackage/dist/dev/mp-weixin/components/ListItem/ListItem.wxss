@@ -30,9 +30,12 @@
   height: 100%;
 }
 .list-scroll-container .list-scroll {
+<<<<<<< HEAD
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
+=======
+>>>>>>> 13文章列表制作-容器组件
   overflow: hidden;
   height: 100%;
   -webkit-box-sizing: border-box;

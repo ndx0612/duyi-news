@@ -10,6 +10,7 @@
 
 <script>
 	export default {
+<<<<<<< HEAD
 		data() {
 			return {
 				itemList:[
@@ -21,6 +22,19 @@
 					{mode:"base"},
 				]
 			}
+=======
+		name:"ListItem",
+		data() {
+			return {
+				itemList:[
+					{mode:'base'},
+					{mode:'column'},
+					{mode:'image'},
+					{mode:'base'},
+					{mode:'base'},
+				]
+			};
+>>>>>>> 13文章列表制作-容器组件
 		}
 	}
 </script>
@@ -29,7 +43,10 @@
 	.list-scroll-container {
 		height: 100%;
 		.list-scroll {
+<<<<<<< HEAD
 			flex: 1;
+=======
+>>>>>>> 13文章列表制作-容器组件
 			overflow: hidden;
 			height: 100%;
 			box-sizing: border-box;

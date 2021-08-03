@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+=======
+/* 基础卡片 */
+>>>>>>> 13文章列表制作-容器组件
 .list-card {
 	@include flex();
 	padding: 20rpx;
 	margin: 20rpx;
 	border-radius: 10rpx;
+<<<<<<< HEAD
 	box-shadow: 0 0 10rpx 2rpx rgba(0,0,0,.1);
+=======
+	box-shadow: 0 0 10px 2rpx rgba(0,0,0,.1);
+>>>>>>> 13文章列表制作-容器组件
 	.list-card-img {
 		width: 120rpx;
 		height: 120rpx;
@@ -17,7 +25,11 @@
 	}
 	.list-card-content {
 		@include flex(space-between,column);
+<<<<<<< HEAD
 		padding-left:20rpx;
+=======
+		padding-left: 20rpx;
+>>>>>>> 13文章列表制作-容器组件
 		width: 100%;
 		.list-card-content-title {
 			@include flex();
@@ -35,6 +47,11 @@
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
+	
+	/* 三种图片类型的公共样式 */
+>>>>>>> 13文章列表制作-容器组件
 	.list-card-content-desc {
 		@include flex();
 		font-size: 24rpx;
@@ -52,10 +69,16 @@
 			line-height: 1.5;
 		}
 	}
+<<<<<<< HEAD
+=======
+	
+	/* 多图模式以及大图模式的公共样式 */
+>>>>>>> 13文章列表制作-容器组件
 	.list-card-top,.list-card-middle,.list-card-bottom {
 		@include flex();
 		width: 100%;
 	}
+<<<<<<< HEAD
 	&.mode-column {
 		flex-direction: column;
 		.image-container {
@@ -76,6 +99,12 @@
 	}
 	&.mode-image {
 		flex-direction: column;
+=======
+	
+	/* 多图模式 */
+	&.mode-column {
+		flex-direction: column;
+>>>>>>> 13文章列表制作-容器组件
 		.list-card-top {
 			text {
 				font-size: 28rpx;
@@ -89,11 +118,37 @@
 				border-radius: 10rpx;
 				height: 140rpx;
 				overflow: hidden;
+<<<<<<< HEAD
 			}
+=======
+				image {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			
+		}
+	}
+	&.mode-image {
+		flex-direction: column;
+		.image-container {
+			width: 100%;
+			height: 200rpx;
+>>>>>>> 13文章列表制作-容器组件
 			image {
 				width: 100%;
 				height: 100%;
 			}
 		}
+<<<<<<< HEAD
+=======
+		.list-card-middle {
+			margin-top: 10rpx;
+			text {
+				font-size: 28rpx;
+				color: #333333;
+			}
+		}
+>>>>>>> 13文章列表制作-容器组件
 	}
 }

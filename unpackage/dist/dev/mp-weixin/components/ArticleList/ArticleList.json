@@ -1,6 +1,13 @@
 {
+<<<<<<< HEAD
   "component": true,
   "usingComponents": {
     "list-item": "/components/ListItem/ListItem"
   }
+=======
+  "usingComponents": {
+    "list-item": "/components/ListItem/ListItem"
+  },
+  "component": true
+>>>>>>> 13文章列表制作-容器组件
 }
