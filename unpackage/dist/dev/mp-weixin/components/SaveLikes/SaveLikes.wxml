@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-<view class="save-icons"><uni-icons vue-id="b6971c7c-1" color="#ff6600" type="heart-filled" size="20" bind:__l="__l"></uni-icons></view>
-=======
 <view class="save-incons"><uni-icons vue-id="b6971c7c-1" color="#ff6600" type="heart-filled" size="20" bind:__l="__l"></uni-icons></view>
->>>>>>> 13文章列表制作-容器组件
