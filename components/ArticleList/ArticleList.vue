@@ -2,7 +2,7 @@
   <swiper class="swiper-container" :current="activeIndex" @change="changeCurrentIndex" >
     <swiper-item v-for="(item,index) in labelList" :key="index">
       <view class="swiper-item uni-bg-red">
-        {{item.name}}
+		<ListItem></ListItem>
       </view>
     </swiper-item>
   </swiper>
@@ -27,5 +27,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+	.swiper-container {
+		height: 100%;
+		.swiper-item {
+			height: 100%;
+			overflow: hidden;
+		}
+	}
 </style>
