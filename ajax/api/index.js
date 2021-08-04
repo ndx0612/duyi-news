@@ -4,7 +4,6 @@
 // /.js/ => 需要查询的文件的后缀名
 
 const requireApi = require.context('.', true, /.js$/);
-console.log(requireApi.keys())
 let module = {};
 
 requireApi.keys().forEach((key, index) => {

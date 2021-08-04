@@ -150,15 +150,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   name: "ListItem",
-  data: function data() {
-    return {
-      itemList: [
-      { mode: 'base' },
-      { mode: 'column' },
-      { mode: 'image' },
-      { mode: 'base' },
-      { mode: 'base' }] };
+  props: {
+    articleList: Array },
 
+  data: function data() {
+    return {};
 
   } };exports.default = _default;
 

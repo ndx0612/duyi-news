@@ -22,7 +22,7 @@
 		methods: {
 			async _intiLabelList() {
 				const labelList = await this.$http.get_label_list()
-				this.labelList = labelList
+				this.labelList = [{name:"全部"},...labelList]
 			},
 			/* 修改当前activeIndex值 */
 			changeCurrentIndex(index) {

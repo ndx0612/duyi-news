@@ -5,6 +5,7 @@ export default ({name,data={}})=> {
 		})
 		uniCloud.callFunction({
 			name,
+      data,
 			success({result}) {
 				if(result.code === 0) {
 					resolve(result.data)
@@ -21,4 +22,3 @@ export default ({name,data={}})=> {
 		})
 	})
 }
-
