@@ -1,8 +1,8 @@
 <template>
   <swiper class="swiper-container" :current="activeIndex" @change="changeCurrentIndex">
-    <swiper-item v-for="(item,index) in labelList" :key="index">
-      <view class="swiper-item uni-bg-red">
-        <ListItem :articleList="articleList"></ListItem>
+    <swiper-item v-for="(item,index) in labelList" :key="item._id">
+      <view class="swiper-item">
+        <ListItem :articleList="articleData[index]"></ListItem>
       </view>
     </swiper-item>
   </swiper>
@@ -19,7 +19,7 @@ export default {
   },
   data () {
     return {
-      articleList: []
+      articleData: {}
     }
   },
   watch: {
@@ -31,11 +31,13 @@ export default {
     changeCurrentIndex (e) {
       const {current} = e.detail
       this.$emit('changeCurrentIndex', current)
-      this._getArticleList(current)
+      if(!this.articleData[current] || this.articleData[current].length == 0) {
+        this._getArticleList(current)
+      }
     },
     async _getArticleList (currentIndex) {
       const articleList = await this.$http.get_article_list({classify:this.labelList[currentIndex].name})
-      this.articleList = articleList
+      this.$set(this.articleData,currentIndex,articleList)
     }
   }
 }

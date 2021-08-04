@@ -151,7 +151,9 @@ var _default =
 {
   name: "ListItem",
   props: {
-    articleList: Array },
+    articleList: {
+      type: Array } },
+
 
   data: function data() {
     return {};
