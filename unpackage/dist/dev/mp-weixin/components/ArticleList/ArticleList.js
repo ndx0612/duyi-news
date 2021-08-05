@@ -158,7 +158,9 @@ var _default =
   },
   data: function data() {
     return {
-      articleData: {} };
+      articleData: {},
+      page: 1,
+      pageSize: 6 };
 
   },
   watch: {
@@ -174,8 +176,13 @@ var _default =
         this._getArticleList(current);
       }
     },
+    //获取文章列表
     _getArticleList: function _getArticleList(currentIndex) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var articleList;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.$http.get_article_list({ classify: _this.labelList[currentIndex].name }));case 2:articleList = _context.sent;
+                  _this.$http.get_article_list({
+                    classify: _this.labelList[currentIndex].name,
+                    page: _this.page,
+                    pageSize: _this.pageSize }));case 2:articleList = _context.sent;
+
                 _this.$set(_this.articleData, currentIndex, articleList);case 4:case "end":return _context.stop();}}}, _callee);}))();
     } } };exports.default = _default;
 

@@ -81,6 +81,9 @@ try {
   components = {
     ListCard: function() {
       return __webpack_require__.e(/*! import() | components/ListCard/ListCard */ "components/ListCard/ListCard").then(__webpack_require__.bind(null, /*! @/components/ListCard/ListCard.vue */ 91))
+    },
+    uniLoadMore: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */ "uni_modules/uni-load-more/components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 111))
     }
   }
 } catch (e) {
@@ -147,6 +150,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   name: "ListItem",
@@ -158,7 +162,11 @@ var _default =
   data: function data() {
     return {};
 
-  } };exports.default = _default;
+  },
+  methods: {
+    loadmore: function loadmore() {// 监听触底事件，通知articleLIs组件到底状态
+      this.$emit('loadmore');
+    } } };exports.default = _default;
 
 /***/ }),
 
