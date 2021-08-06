@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 基础卡片 -->
-		<view class="list-card" v-if="item.mode==='base'">
+		<view class="list-card" v-if="item.mode==='base'" @click="goArticleDetail">
 			<view class="list-card-img">
 				<image :src="item.cover[0] ?item.cover[0] : '/static/img/logo.jpeg'"></image>
 			</view>
@@ -21,7 +21,7 @@
 			</view>
 		</view>
 		<!-- 多图模式 -->
-		<view class="list-card mode-column" v-if="item.mode==='column'">
+		<view class="list-card mode-column" v-if="item.mode==='column'" @click="goArticleDetail">
 			<view class="list-card-top">
 				<text>{{item.title}}</text>
 				<SaveLikes></SaveLikes>
@@ -44,7 +44,7 @@
 
 		</view>
 		<!-- 大图模式 -->
-		<view class="list-card mode-image" v-if="item.mode==='image'">
+		<view class="list-card mode-image" v-if="item.mode==='image'" @click="goArticleDetail">
 			<view class="list-card-top">
 				<view class="image-container">
 					<image src="https://img1.sycdn.imooc.com/5ccfac620001f8d405000344.jpg" mode="aspectFill"></image>
@@ -76,7 +76,13 @@
 			return {
 
 			};
-		}
+		},
+		methods: {
+			goArticleDetail() {
+				console.log('goArticleDetail')
+			}
+		},
+		
 	}
 </script>
 
