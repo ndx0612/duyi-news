@@ -43,7 +43,7 @@ export default {
         /* 验证手机号码 */
         validatePhone (rule, val, data, callback) {
           switch (true) {
-            case this.mobileReg.test(val):
+            case !this.mobileReg.test(val):
               callback('手机号码格式不正确')
               break;
             default:
