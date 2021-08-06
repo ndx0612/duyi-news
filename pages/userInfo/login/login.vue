@@ -11,10 +11,9 @@
       </view>
     </view>
     <!-- 表单部分 -->
-    <uni-forms class="form" ref="form" :modelValue="formData" :rules="userRules">
+    <uni-forms class="form" ref="form" :modelValue="formData" >
       <view class="" v-if="type ==='account'">
         <uni-forms-item label="账号" name="loginName">
-
           <input placeholder-class="placeholder" class="form-input" type="text" placeholder="请输入账号" v-model="formData.loginName" />
         </uni-forms-item>
         <uni-forms-item label="密码" name="password">
@@ -43,6 +42,9 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
+  onReady() {
+    this.$refs.form.setRules(this.userRules)
+  },
   data () {
     return {
       type: 'account',
