@@ -23,11 +23,11 @@
       </view>
       <view class="" v-else>
         <uni-forms-item label="手机号" name="phone">
-          <input placeholder-class="placeholder" class="form-input" type="number" placeholder="请输入手机号" v-model="formData.phone" />
+          <uni-easyinput :inputBorder="false" placeholder-class="placeholder" class="form-input" type="number" placeholder="请输入手机号" v-model="formData.phone"></uni-easyinput>
         </uni-forms-item>
         <uni-forms-item label="验证码" name="vCode">
           <input placeholder-class="placeholder" class="form-input" type="text" placeholder="请输入密码" v-model="formData.vCode" />
-          <SendCode class="code-component"></SendCode>
+          <SendCode @setCurrentCode="returnCode=$event" class="code-component" @getForm="getForm"></SendCode>
         </uni-forms-item>
       </view>
 
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -51,7 +51,8 @@ export default {
         password: '',
         phone: "",
         vCode: '',
-      }
+      },
+      returnCode: ''
     }
   },
   methods: {
@@ -80,6 +81,10 @@ export default {
         setTimeout(() => { uni.navigateBack() }, 1500)
       }
     },
+    // 发送表单到sendCode组件
+    getForm (cb) {
+      cb && cb(this.$refs.form)
+    },
     ...mapMutations(['updateUserInfo'])
   }
 }
@@ -88,6 +93,9 @@ export default {
 <style lang="scss">
 page {
   background-color: #f5f5f5;
+}
+.code-component {
+  flex-shrink: 0;
 }
 </style>
 

@@ -46,14 +46,20 @@
 }
 
 /deep/ .uni-forms-item {
-    padding-left: 30rpx;
+    padding-left: 30rpx !important;
     border-bottom: 1px solid #eee;
-    padding-top: 24rpx;
+    height: 120rpx;
     background-color: #fff;
 }
 
+/deep/ .uni-forms-item__box {
+    @include flex(flex-start);
+    height: 100%;
+}
+
 /deep/ .uni-forms-item__inner {
-    padding-bottom: 24rpx;
+    padding-bottom: 0rpx !important;
+    width: 100% !important;
 }
 
 /deep/ .label-text span {

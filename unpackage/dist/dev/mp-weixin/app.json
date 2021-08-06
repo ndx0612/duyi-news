@@ -4,7 +4,8 @@
     "pages/follow/follow",
     "pages/self/self",
     "pages/search/search",
-    "pages/labelAdmin/labelAdmin"
+    "pages/labelAdmin/labelAdmin",
+    "pages/userInfo/login/login"
   ],
   "subPackages": [],
   "window": {

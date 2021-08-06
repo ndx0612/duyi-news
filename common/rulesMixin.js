@@ -24,6 +24,7 @@ export default {
             vCode: {
               rules: [
                 { required: true, 'errorMessage': "验证码不能为空" },
+                { validateFunction: this.validateMobileCode }   // 自定义验证规则
               ]
             }
           },
@@ -45,6 +46,16 @@ export default {
           switch (true) {
             case !this.mobileReg.test(val):
               callback('手机号码格式不正确')
+              break;
+            default:
+              return true
+          }
+        },
+        // 验证后端返回验证码 
+        validateMobileCode (rule, val, data, callback) {
+          switch (true) {
+            case val !== this.returnCode:
+              callback('请输入正确的验证码')
               break;
             default:
               return true
