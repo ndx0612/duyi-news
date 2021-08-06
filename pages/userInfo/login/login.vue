@@ -14,10 +14,11 @@
     <uni-forms class="form" ref="form" :modelValue="formData" :rules="userRules">
       <view class="" v-if="type ==='account'">
         <uni-forms-item label="账号" name="loginName">
+
           <input placeholder-class="placeholder" class="form-input" type="text" placeholder="请输入账号" v-model="formData.loginName" />
         </uni-forms-item>
-        <uni-forms-item label="密码" name="loginName">
-          <input placeholder-class="placeholder" class="form-input" type="password" placeholder="请输入密码" v-model="formData.password" />
+        <uni-forms-item label="密码" name="password">
+          <uni-easyinput :inputBorder="false" placeholder-class="placeholder" class="form-input" type="password" placeholder="请输入密码" v-model="formData.password"></uni-easyinput>
         </uni-forms-item>
       </view>
       <view class="" v-else>
@@ -40,6 +41,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -55,12 +57,30 @@ export default {
   methods: {
     async _userLoginSubmit () {
       const res = await this.$refs.form.submit()
+      /* 正式向后端发送请求 */
+      // console.log(res)
+      this._sendUserInfo({
+        ...res,
+        type: this.type
+      })
     },
     /* 切换当前表单类型 */
     changFormType (type) {
       this.type = type;
       this.$refs.form.clearValidate([]) // 清空校验规则
-    }
+    },
+    /* 开始发送数据到后端 */
+    async _sendUserInfo (data) {
+      const res = await this.$http.user_login(data)
+      if (res) {
+        this.updateUserInfo(res)
+        uni.showToast({
+          title: '登录成功', icon: 'none',
+        })
+        setTimeout(() => { uni.navigateBack() }, 1500)
+      }
+    },
+    ...mapMutations(['updateUserInfo'])
   }
 }
 </script>

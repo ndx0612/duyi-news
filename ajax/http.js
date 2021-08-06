@@ -1,5 +1,5 @@
 export default ({name,data={}})=> {
-	/* 导出pormise对象 */
+	/* 导出promise对象 */
 	return new Promise((resolve,reject) => {
 		uni.showLoading({
 		})
