@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 export default {
   onReady() {
     this.$refs.form.setRules(this.userRules)
@@ -87,7 +86,6 @@ export default {
     getForm (cb) {
       cb && cb(this.$refs.form)
     },
-    ...mapMutations(['updateUserInfo'])
   }
 }
 </script>
