@@ -1,5 +1,8 @@
 {
-  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "nav-bar": "/components/NavBar/NavBar",
+    "list-item": "/components/ListItem/ListItem"
+  }
 }
