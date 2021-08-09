@@ -106,6 +106,7 @@
   color: #333333;
   font-weight: 400;
   line-height: 1.2;
+  width: 100%;
 }
 .list-card .list-card-content .list-card-content-title text {
   overflow: hidden;
@@ -145,7 +146,9 @@
   color: #999;
   line-height: 1.5;
 }
-.list-card .list-card-top, .list-card .list-card-middle, .list-card .list-card-bottom {
+.list-card .list-card-top,
+.list-card .list-card-middle,
+.list-card .list-card-bottom {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
