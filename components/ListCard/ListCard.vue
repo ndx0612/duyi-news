@@ -79,7 +79,10 @@
 		},
 		methods: {
 			goArticleDetail() {
+        // 跳转到详情界面
 				console.log('goArticleDetail')
+        // 发送收藏自定义事件
+        this.$emit('saveHistory')
 			}
 		},
 		

@@ -80,7 +80,7 @@ var components
 try {
   components = {
     uniIcons: function() {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 125))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 132))
     }
   }
 } catch (e) {
@@ -158,14 +158,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   props: {
     isSearch: {
       type: Boolean,
-      default: false } },
+      default: false },
 
+    parentVal: String },
 
   created: function created() {
     /* 初始化获取状态栏高度 */
@@ -204,8 +204,23 @@ var _default =
 
       uni.navigateBack();
 
+    },
+    changeInputVal: function changeInputVal(val) {
+      this.$emit('sendSearchData');
+    } },
 
-    } } };exports.default = _default;
+  computed: {
+    // 动态获取searchvalue内容
+    searchVal: {
+      get: function get() {
+        return this.parentVal;
+      },
+      set: function set(val) {
+        this.$emit('updateVal', val);
+        if (!val) {
+          this.$emit('sendSearchData');
+        }
+      } } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

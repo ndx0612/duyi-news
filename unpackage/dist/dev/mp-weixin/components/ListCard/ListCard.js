@@ -80,7 +80,7 @@ var components
 try {
   components = {
     SaveLikes: function() {
-      return Promise.all(/*! import() | components/SaveLikes/SaveLikes */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/SaveLikes/SaveLikes")]).then(__webpack_require__.bind(null, /*! @/components/SaveLikes/SaveLikes.vue */ 154))
+      return __webpack_require__.e(/*! import() | components/SaveLikes/SaveLikes */ "components/SaveLikes/SaveLikes").then(__webpack_require__.bind(null, /*! @/components/SaveLikes/SaveLikes.vue */ 154))
     }
   }
 } catch (e) {
@@ -227,7 +227,10 @@ var _default =
   },
   methods: {
     goArticleDetail: function goArticleDetail() {
+      // 跳转到详情界面
       console.log('goArticleDetail');
+      // 发送收藏自定义事件
+      this.$emit('saveHistory');
     } } };exports.default = _default;
 
 /***/ }),

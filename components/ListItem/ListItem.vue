@@ -2,9 +2,9 @@
   <view class="list-scroll-container">
     <scroll-view scroll-y="true" class="list-scroll" @scrolltolower="loadmore">
       <view>
-        <ListCard :item="item" v-for="item in articleList" :key="item._id"></ListCard>
+        <ListCard :item="item" v-for="item in articleList" :key="item._id" @saveHistory="$emit('saveHistory')"></ListCard>
       </view>
-      <uni-load-more v-if="articleList.length === 0 || articleList.length> 7" :status="loadData.loading || 'loading'"></uni-load-more>
+      <uni-load-more v-if="isShowLoading && (articleList.length === 0 || articleList.length> 7)" :status="loadData.loading || 'loading'"></uni-load-more>
     </scroll-view>
   </view>
 </template>
@@ -15,7 +15,7 @@ export default {
   props: {
     articleList: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     },
@@ -26,6 +26,10 @@ export default {
           loading: "loading"
         }
       }
+    },
+    isShowLoading: {
+      type: Boolean,
+      default: true
     }
   },
   data () {

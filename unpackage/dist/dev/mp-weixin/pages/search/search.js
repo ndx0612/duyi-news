@@ -99,7 +99,7 @@ try {
       return __webpack_require__.e(/*! import() | components/NavBar/NavBar */ "components/NavBar/NavBar").then(__webpack_require__.bind(null, /*! @/components/NavBar/NavBar.vue */ 75))
     },
     ListItem: function() {
-      return __webpack_require__.e(/*! import() | components/ListItem/ListItem */ "components/ListItem/ListItem").then(__webpack_require__.bind(null, /*! @/components/ListItem/ListItem.vue */ 133))
+      return __webpack_require__.e(/*! import() | components/ListItem/ListItem */ "components/ListItem/ListItem").then(__webpack_require__.bind(null, /*! @/components/ListItem/ListItem.vue */ 96))
     }
   }
 } catch (e) {
@@ -123,6 +123,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.parentVal = $event
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -156,45 +161,71 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 26);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
     return {
       isSearch: true,
-      searchList: [] };
+      searchList: [],
+      parentVal: '',
+      isShowLoading: false,
+      isShowHistory: true };
 
   },
-  methods: {} };exports.default = _default;
+  methods: _objectSpread({
+    // 开始进行内容搜索
+    _sendSearchData: function _sendSearchData() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$$http$ge, articleList, total;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this.isShowHistory = false;if (
+                _this.parentVal) {_context.next = 5;break;}
+                _this.isShowHistory = true;
+                _this.searchList = [];return _context.abrupt("return");case 5:_context.next = 7;return (
+
+
+                  _this.$http.get_search_data({ searchVal: _this.parentVal }));case 7:_yield$_this$$http$ge = _context.sent;articleList = _yield$_this$$http$ge.articleList;total = _yield$_this$$http$ge.total;
+                _this.searchList = articleList;case 11:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    // 弹出搜索内容
+    openHistory: function openHistory(val) {
+      this.parentVal = val;
+      this._sendSearchData();
+    },
+    // 进行收藏历史记录操作
+    saveHistory: function saveHistory(val) {
+      this.setHistory(this.parentVal);
+    } },
+  (0, _vuex.mapMutations)(['setHistory', 'cleanHistory'])),
+
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['historyList'])) };exports.default = _default;
 
 /***/ }),
 
