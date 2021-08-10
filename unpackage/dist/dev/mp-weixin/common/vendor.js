@@ -11624,6 +11624,10 @@ var index = {
   cleanHistory: function cleanHistory(state) {
     uni.removeStorageSync('historyList');
     state.historyList = [];
+    uni.showToast({
+      title: "清空完成",
+      icon: "success" });
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

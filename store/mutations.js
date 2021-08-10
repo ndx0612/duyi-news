@@ -13,8 +13,12 @@ export default {
     state.historyList = list;
   },
   // 清空搜索历史信息
-  cleanHistory(state) {
+  cleanHistory (state) {
     uni.removeStorageSync('historyList')
     state.historyList = []
+    uni.showToast({
+      title: "清空完成",
+      icon: "success"
+    })
   }
 }
