@@ -96,13 +96,13 @@ var components
 try {
   components = {
     NavBar: function() {
-      return __webpack_require__.e(/*! import() | components/NavBar/NavBar */ "components/NavBar/NavBar").then(__webpack_require__.bind(null, /*! @/components/NavBar/NavBar.vue */ 75))
+      return __webpack_require__.e(/*! import() | components/NavBar/NavBar */ "components/NavBar/NavBar").then(__webpack_require__.bind(null, /*! @/components/NavBar/NavBar.vue */ 77))
     },
     TabBar: function() {
-      return __webpack_require__.e(/*! import() | components/TabBar/TabBar */ "components/TabBar/TabBar").then(__webpack_require__.bind(null, /*! @/components/TabBar/TabBar.vue */ 82))
+      return __webpack_require__.e(/*! import() | components/TabBar/TabBar */ "components/TabBar/TabBar").then(__webpack_require__.bind(null, /*! @/components/TabBar/TabBar.vue */ 84))
     },
     ArticleList: function() {
-      return __webpack_require__.e(/*! import() | components/ArticleList/ArticleList */ "components/ArticleList/ArticleList").then(__webpack_require__.bind(null, /*! @/components/ArticleList/ArticleList.vue */ 89))
+      return __webpack_require__.e(/*! import() | components/ArticleList/ArticleList */ "components/ArticleList/ArticleList").then(__webpack_require__.bind(null, /*! @/components/ArticleList/ArticleList.vue */ 91))
     }
   }
 } catch (e) {
@@ -192,8 +192,15 @@ var _vuex = __webpack_require__(/*! vuex */ 26);function _interopRequireDefault(
     } },
   (0, _vuex.mapMutations)(['setLabelList'])),
 
-  computed: _objectSpread({},
-  (0, _vuex.mapState)(['labelList'])) };exports.default = _default;
+  computed: {
+    labelList: function labelList() {var _this2 = this;
+      if (this.userInfo) {
+        this.activeIndex = 0;
+        return [].concat(_toConsumableArray(this.$store.state.labelList.slice(0, 1)), _toConsumableArray(this.$store.state.labelList.filter(function (item) {return _this2.userInfo.label_ids.includes(item._id);})));
+      } else {
+        return this.$store.state.labelList;
+      }
+    } } };exports.default = _default;
 
 /***/ }),
 

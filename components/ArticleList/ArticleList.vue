@@ -27,6 +27,8 @@ export default {
   },
   watch: {
     labelList (newVal, OldVal) {
+      this.articleData = {}
+      this.loadData = {}
       this._getArticleList(this.activeIndex)
     },
   },

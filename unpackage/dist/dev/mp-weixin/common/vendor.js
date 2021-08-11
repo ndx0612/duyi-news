@@ -2059,7 +2059,32 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 108:
+/***/ 11:
+/*!******************************************************************************!*\
+  !*** /Users/hangang/Documents/渡一教育/uniapp课程全部资料/代码/学习项目启动/ajax/api/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* 批量进行文件导出 */
+// . =>API目录的相对路径
+// true => 是否查询子目录
+// /.js/ => 需要查询的文件的后缀名
+
+var requireApi = __webpack_require__(12);
+var _module = {};
+
+requireApi.keys().forEach(function (key, index) {
+  if (key === './index.js') return;
+  Object.assign(_module, requireApi(key));
+});var _default =
+
+_module;exports.default = _default;
+
+/***/ }),
+
+/***/ 110:
 /*!****************************************************************************************************************!*\
   !*** /Users/hangang/Documents/渡一教育/uniapp课程全部资料/代码/学习项目启动/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \****************************************************************************************************************/
@@ -2201,32 +2226,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 11:
-/*!******************************************************************************!*\
-  !*** /Users/hangang/Documents/渡一教育/uniapp课程全部资料/代码/学习项目启动/ajax/api/index.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* 批量进行文件导出 */
-// . =>API目录的相对路径
-// true => 是否查询子目录
-// /.js/ => 需要查询的文件的后缀名
-
-var requireApi = __webpack_require__(12);
-var _module = {};
-
-requireApi.keys().forEach(function (key, index) {
-  if (key === './index.js') return;
-  Object.assign(_module, requireApi(key));
-});var _default =
-
-_module;exports.default = _default;
-
-/***/ }),
-
-/***/ 116:
+/***/ 118:
 /*!*******************************************************************************************************************!*\
   !*** /Users/hangang/Documents/渡一教育/uniapp课程全部资料/代码/学习项目启动/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*******************************************************************************************************************/
@@ -2766,7 +2766,7 @@ webpackContext.id = 12;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.get_search_data = exports.update_save_like = exports.get_article_list = exports.get_label_list = void 0;var _http = _interopRequireDefault(__webpack_require__(/*! ../../http.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.update_label_ids = exports.get_search_data = exports.update_save_like = exports.get_article_list = exports.get_label_list = void 0;var _http = _interopRequireDefault(__webpack_require__(/*! ../../http.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // 获取文章列表
 var get_label_list = function get_label_list(data) {return (0, _http.default)({
@@ -2789,7 +2789,13 @@ var update_save_like = function update_save_like(data) {return (0, _http.default
 /* 获取搜索内容 */exports.update_save_like = update_save_like;
 var get_search_data = function get_search_data(data) {return (0, _http.default)({
     name: 'get_search_data',
-    data: data });};exports.get_search_data = get_search_data;
+    data: data });};
+
+
+/* 修改当前显示标签 */exports.get_search_data = get_search_data;
+var update_label_ids = function update_label_ids(data) {return (0, _http.default)({
+    name: 'update_label_ids',
+    data: data });};exports.update_label_ids = update_label_ids;
 
 /***/ }),
 

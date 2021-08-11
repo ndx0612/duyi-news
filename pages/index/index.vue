@@ -2,8 +2,8 @@
   <view class="home-container">
     <NavBar></NavBar>
     <!-- 添加侧边栏 -->
-    <TabBar :labelList="labelList" :activeIndex="activeIndex" @changeCurrentIndex="changeCurrentIndex"></TabBar> 
-     <!-- 文章列表组件 -->
+    <TabBar :labelList="labelList" :activeIndex="activeIndex" @changeCurrentIndex="changeCurrentIndex"></TabBar>
+    <!-- 文章列表组件 -->
     <ArticleList :labelList="labelList" class="list-container" :activeIndex="activeIndex" @changeCurrentIndex="changeCurrentIndex"></ArticleList>
   </view>
 </template>
@@ -32,7 +32,14 @@ export default {
     ...mapMutations(['setLabelList'])
   },
   computed: {
-    ...mapState(['labelList'])
+    labelList () {
+      if (this.userInfo) {
+        this.activeIndex = 0;
+        return [...this.$store.state.labelList.slice(0,1),...this.$store.state.labelList.filter(item => this.userInfo.label_ids.includes(item._id))]
+      } else {
+        return this.$store.state.labelList
+      }
+    },
   }
 }
 </script>
