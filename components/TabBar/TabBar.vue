@@ -20,22 +20,23 @@ export default {
     activeIndex: Number
   },
   watch: {
-    activeIndex(index) {
+    activeIndex (index) {
       this.currentIndex = `item${index}`
     }
   },
-  data() {
+  data () {
     return {
       currentIndex: ''
     }
   },
   methods: {
-    goLabelAdmin() {
+    async goLabelAdmin () {
+      await this.checkedIsLogin();
       uni.navigateTo({
         url: "/pages/labelAdmin/labelAdmin"
       })
     },
-    navClickFn(index) {
+    navClickFn (index) {
       this.$emit('changeCurrentIndex', index)
     }
   },

@@ -11,7 +11,7 @@
       </view>
     </view>
     <!-- 表单部分 -->
-    <uni-forms class="form" ref="form" :modelValue="formData" >
+    <uni-forms class="form" ref="form" :modelValue="formData">
       <view class="" v-if="type ==='account'">
         <uni-forms-item label="账号" name="loginName">
           <input placeholder-class="placeholder" class="form-input" type="text" placeholder="请输入账号" v-model="formData.loginName" />
@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  onReady() {
+  onReady () {
     this.$refs.form.setRules(this.userRules)
   },
   data () {
@@ -79,7 +79,17 @@ export default {
         uni.showToast({
           title: '登录成功', icon: 'none',
         })
-        setTimeout(() => { uni.navigateBack() }, 1500)
+
+        setTimeout(() => {
+          // #ifdef H5
+          uni.switchTab({
+            url: '/pages/index/index'
+          })
+          // #endif
+          // #ifndef H5
+          uni.navigateBack()
+          // #endif
+        }, 1500)
       }
     },
     // 发送表单到sendCode组件

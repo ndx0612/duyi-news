@@ -449,6 +449,10 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
+                "loginName": "alan9558",
+                "password": "123qwe",
+                "phone": "13552752517",
                 "article_ids": [
                     "302042",
                     "301911"
@@ -468,6 +472,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "298045",
                     "286282"
@@ -487,6 +492,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "294509",
                     "293012"
@@ -506,6 +512,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "300475",
                     "293310"
@@ -525,6 +532,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "289159",
                     "26624"
@@ -544,6 +552,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "291507",
                     "283364"
@@ -563,6 +572,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "295301",
                     "286567"
@@ -582,6 +592,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "292698",
                     "292504"
@@ -601,6 +612,7 @@
                 "article_likes_ids": [],
                 "author_likes_ids": [],
                 "thumbs_up_article_ids": [],
+                "label_ids": [],
                 "article_ids": [
                     "301818",
                     "298932"

@@ -20,5 +20,10 @@ export default {
       title: "清空完成",
       icon: "success"
     })
+  },
+  // 设置导航栏选项卡
+  setLabelList (state, labelList) {
+    uni.setStorageSync('labelList',labelList)
+    state.labelList = labelList
   }
 }

@@ -1,14 +1,15 @@
 'use strict';
 // 获取数据库引用
 const db = uniCloud.database()
+const $ = db.command.aggregate
 exports.main = async (event, context) => {
   const { loginName, password, phone, type } = event;
-	
+
   const { affectedDocs, data } = await db.collection('user')
     .aggregate()
     .match(type === 'account' ? { loginName, password } : { phone })
     .end()
-	
+
   //返回数据给客户端
   return affectedDocs ? {
     code: 0,

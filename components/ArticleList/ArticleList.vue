@@ -15,7 +15,7 @@ export default {
     activeIndex: Number
   },
   created () {
-    // this._getArticleList()
+    this.labelList.length && this._getArticleList(this.activeIndex)
   },
   data () {
     return {
@@ -80,7 +80,7 @@ export default {
       this.$set(this.articleData, currentIndex, oldList)
       // this.$forceUpdate()
     }
-  }
+  },
 }
 </script>
 

@@ -154,7 +154,7 @@ var _default =
     activeIndex: Number },
 
   created: function created() {
-    // this._getArticleList()
+    this.labelList.length && this._getArticleList(this.activeIndex);
   },
   data: function data() {
     return {
