@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   data () {
     return {
@@ -42,8 +43,11 @@ export default {
     },
     // 修改标签
     _updateLabel() {
-
+      console.log('todo')
     }
+  },
+  computed: {
+    ...mapState(['labelList'])
   }
 }
 </script>

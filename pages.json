@@ -30,7 +30,7 @@
         {
             "path": "pages/labelAdmin/labelAdmin",
             "style": {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "标签管理",
                 "enablePullDownRefresh": false
             }
         },
