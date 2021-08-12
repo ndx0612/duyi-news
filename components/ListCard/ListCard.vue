@@ -80,6 +80,9 @@
 		methods: {
 			goArticleDetail() {
         // 跳转到详情界面
+		uni.navigateTo({
+			url:"../../pages/articleDetail/articleDetail"
+		})
 				console.log('goArticleDetail')
         // 发送收藏自定义事件
         this.$emit('saveHistory')
