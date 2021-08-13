@@ -20,12 +20,18 @@ export const update_save_like = data => ajax({
 
 /* 获取搜索内容 */
 export const get_search_data = data => ajax({
-  name:'get_search_data',
+  name: 'get_search_data',
   data
 })
 
 /* 修改当前显示标签 */
 export const update_label_ids = data => ajax({
-  name:'update_label_ids',
+  name: 'update_label_ids',
+  data
+})
+
+/* 获取文章详情 */
+export const get_article_detail = data => ajax({
+  name: 'get_article_detail',
   data
 })

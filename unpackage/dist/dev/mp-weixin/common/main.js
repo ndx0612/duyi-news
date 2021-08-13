@@ -18,7 +18,6 @@ _vue.default.use(_rulesMixin.default);
 _vue.default.config.productionTip = false;
 
 
-
 _App.default.mpType = 'app';
 _vue.default.prototype.$http = _index.default;
 

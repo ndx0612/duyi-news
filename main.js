@@ -9,7 +9,6 @@ Vue.use(userMixin)
 Vue.config.productionTip = false
 
 
-
 App.mpType = 'app'
 Vue.prototype.$http = module;
 
