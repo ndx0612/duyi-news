@@ -49,12 +49,10 @@
 <script>
 import uParse from '../../components/gaoyia-parse/parse';
 import marked from 'marked'
-import MDParserHighlight from '../../components/cmder-MDParserHighlight/index.vue'
 
 export default {
   name: "articleDetail.vue",
   components: {
-    MDParserHighlight,
     uParse
   },
   onLoad (...options) {
