@@ -25,9 +25,17 @@
       </view>
     </view>
 
-    <!-- 评论组件 -->
+    <!-- 评论展示组件 -->
+    <view class="detail-comment">
+      <view class="comment-title">最新评论</view>
+      <view class="comment-content">
+        <CommentBox></CommentBox>
+      </view>
+    </view>
+
+    <!-- 评论编写组件 -->
     <view class="detail-bottom">
-      <view class="input-container">
+      <view class="input-container" @click="openMaskerComment">
         <text>谈谈你的看法</text>
         <uni-icons type="compose" size="16" color="#f07373"></uni-icons>
       </view>
@@ -43,6 +51,8 @@
         </view>
       </view>
     </view>
+	<!-- 评论组件 -->
+	<CommentMasker :showPopup="showPopup" @closePopupMasker="showPopup=$event" @sendCommentData="_sendCommentData"></CommentMasker>
   </view>
 </template>
 
@@ -61,14 +71,28 @@ export default {
   },
   data () {
     return {
-      articleData: null
+      articleData: null,
+	  showPopup:false
     }
   },
   methods: {
     async _getArticleDetail () {
       const data = await this.$http.get_article_detail({ article_id: this.articleData._id });
       this.articleData = data
-    }
+    },
+	// 打开弹窗
+	async openMaskerComment() {
+		await this.checkedIsLogin()
+		this.showPopup = true
+	},
+	// 发送评论内容到后端
+	async _sendCommentData(content) {
+		const {msg} = await this.$http.update_comment({userId:this.userInfo._id,articleId:this.articleData._id,content})
+		uni.showToast({
+			title:msg
+		})
+		this.showPopup = false;
+	}
   },
   computed: {
     content () {
