@@ -20,17 +20,19 @@
       <button type="default" class="detail-header-button">取消关注</button>
     </view>
     <view class="detail-content-container">
-      <view class="detail-html">
-        <u-parse className="markdown-body" :content="content"></u-parse>
-      </view>
-    </view>
+      <!-- <view class="detail-html">
+        <u-parse className="markdown-body" :content="content" no-data="数据加载中..."></u-parse>
+      </view> -->
 
-    <!-- 评论展示组件 -->
-    <view class="detail-comment">
-      <view class="comment-title">最新评论</view>
-      <view class="comment-content">
-        <CommentBox></CommentBox>
+      <!-- 评论展示组件 -->
+      <view class="detail-comment">
+        <view class="comment-title">最新评论</view>
+        <view class="comment-content-container" v-for="item in commentList" :key="item.comment_id">
+          <CommentBox :commentData="item"></CommentBox>
+        </view>
+        <view class="no-data" v-if="!commentList.length">暂无评论</view>
       </view>
+
     </view>
 
     <!-- 评论编写组件 -->
@@ -51,8 +53,8 @@
         </view>
       </view>
     </view>
-	<!-- 评论组件 -->
-	<CommentMasker :showPopup="showPopup" @closePopupMasker="showPopup=$event" @sendCommentData="_sendCommentData"></CommentMasker>
+    <!-- 评论组件 -->
+    <CommentMasker :showPopup="showPopup" @closePopupMasker="showPopup=$event" @sendCommentData="_sendCommentData"></CommentMasker>
   </view>
 </template>
 
@@ -68,11 +70,14 @@ export default {
   onLoad (...options) {
     this.articleData = JSON.parse(options[0].params);
     this._getArticleDetail();
+    /* 获取评论列表 */
+    this._getCommentList();
   },
   data () {
     return {
       articleData: null,
-	  showPopup:false
+      showPopup: false,
+      commentList:[]
     }
   },
   methods: {
@@ -80,19 +85,24 @@ export default {
       const data = await this.$http.get_article_detail({ article_id: this.articleData._id });
       this.articleData = data
     },
-	// 打开弹窗
-	async openMaskerComment() {
-		await this.checkedIsLogin()
-		this.showPopup = true
-	},
-	// 发送评论内容到后端
-	async _sendCommentData(content) {
-		const {msg} = await this.$http.update_comment({userId:this.userInfo._id,articleId:this.articleData._id,content})
-		uni.showToast({
-			title:msg
-		})
-		this.showPopup = false;
-	}
+    // 打开弹窗
+    async openMaskerComment () {
+      await this.checkedIsLogin()
+      this.showPopup = true
+    },
+    // 发送评论内容到后端
+    async _sendCommentData (content) {
+      const { msg } = await this.$http.update_comment({ userId: this.userInfo._id, articleId: this.articleData._id, content })
+      uni.showToast({
+        title: msg
+      })
+      this.showPopup = false;
+    },
+    /* 获取评论内容 */
+    async _getCommentList () {
+      const res = await this.$http.get_comments({ articleId: this.articleData._id })
+      this.commentList = res
+    }
   },
   computed: {
     content () {
