@@ -14,15 +14,15 @@
         <view class="detail-header-content-info">
           <text>{{articleData.create_time}}</text>
           <text>{{articleData.browse_count}} 浏览</text>
-          <text>{{articleData.thunbs_up_count}} 赞</text>
+          <text>{{articleData.thumbs_up_count}} 赞</text>
         </view>
       </view>
       <button type="default" class="detail-header-button">取消关注</button>
     </view>
     <view class="detail-content-container">
-      <!-- <view class="detail-html">
+      <view class="detail-html">
         <u-parse className="markdown-body" :content="content" no-data="数据加载中..."></u-parse>
-      </view> -->
+      </view>
 
       <!-- 评论展示组件 -->
       <view class="detail-comment">

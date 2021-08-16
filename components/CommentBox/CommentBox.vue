@@ -29,7 +29,7 @@
           回复
         </view>
       </view>
-      <view class="comment-reply-list" v-for="item in commentData.replyArr" :key="item._comment_id">
+      <view class="comment-reply-list" v-for="item in commentData.replyArr" :key="item.comment_id">
         <CommentBox :isReply="true" @commnetReply="commnetReply" :commentData="item"></CommentBox>
       </view>
     </view>

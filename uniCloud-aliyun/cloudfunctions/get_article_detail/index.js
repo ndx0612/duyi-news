@@ -8,6 +8,9 @@ exports.main = async (event, context) => {
     .match({
       _id: article_id
     })
+    .project({
+      comments: 0
+    })
     .end();
 
 
