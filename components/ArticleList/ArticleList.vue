@@ -26,7 +26,9 @@ export default {
     }
   },
   watch: {
-    labelList (newVal, OldVal) {
+    labelList (newVal, oldVal) {
+      // 判断当前label与新的label是否相同，要是相同，不进行重新的数据获取
+      if (JSON.stringify(newVal) === JSON.stringify(oldVal)) return
       this.articleData = {}
       this.loadData = {}
       this._getArticleList(this.activeIndex)

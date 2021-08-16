@@ -17,7 +17,9 @@
           <text>{{articleData.thumbs_up_count}} 赞</text>
         </view>
       </view>
-      <button type="default" class="detail-header-button">取消关注</button>
+      <button type="default" class="detail-header-button" @click="_followAuthor">
+        {{isFollowAuthor ? '取消关注' : '关注'}}
+      </button>
     </view>
     <view class="detail-content-container">
       <view class="detail-html">
@@ -45,9 +47,9 @@
         <view class="detail-bottom-icon-box">
           <uni-icons type="chat" size="22" color="#f07373"></uni-icons>
         </view>
-        <view class="detail-bottom-icon-box">
-          <uni-icons type="heart" size="22" color="#f07373"></uni-icons>
-        </view>
+        <!-- 引入公共组件 -->
+        <SaveLikes size="22" class="detail-bottom-icon-box" :item="articleData">
+        </SaveLikes>
         <view class="detail-bottom-icon-box">
           <uni-icons type="hand-thumbsup" size="22" color="#f07373"></uni-icons>
         </view>
@@ -126,6 +128,23 @@ export default {
       // 当前为回复内容的时候添加回复的ID
       data.comment.reply_id && (this.replyData.reply_id = data.comment.reply_id)
       this.openMaskerComment()
+    },
+    /* 关注作者 */
+    async _followAuthor () {
+      // 用户检测
+      await this.checkedIsLogin()
+      const { msg } = await this.$http.update_follow_author({ authorId: this.articleData.author.id, userId: this.userInfo._id })
+      uni.showToast({
+        title: msg,
+      })
+      //处理用户存储信息
+      let followIds = [...this.userInfo.author_likes_ids]
+      if (followIds.includes(this.articleData.author.id)) {
+        followIds = followIds.filter(item => item != this.articleData.author.id)
+      }else {
+        followIds.push(this.articleData.author.id)
+      }
+      this.updateUserInfo({...this.userInfo,author_likes_ids:followIds})
     }
   },
   computed: {
@@ -135,6 +154,10 @@ export default {
       } catch (e) {
         return null
       }
+    },
+    //是否关注作者
+    isFollowAuthor() {
+      return this.userInfo && this.userInfo.author_likes_ids.includes(this.articleData.author.id)
     }
   }
 }
