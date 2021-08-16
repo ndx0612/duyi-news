@@ -28,7 +28,7 @@
       <view class="detail-comment">
         <view class="comment-title">最新评论</view>
         <view class="comment-content-container" v-for="item in commentList" :key="item.comment_id">
-          <CommentBox :commentData="item"></CommentBox>
+          <CommentBox @commnetReply="commnetReply" :commentData="item"></CommentBox>
         </view>
         <view class="no-data" v-if="!commentList.length">暂无评论</view>
       </view>
@@ -54,14 +54,14 @@
       </view>
     </view>
     <!-- 评论组件 -->
-    <CommentMasker :showPopup="showPopup" @closePopupMasker="showPopup=$event" @sendCommentData="_sendCommentData"></CommentMasker>
+    <CommentMasker :showPopup="showPopup" @closePopupMasker="showPopup=$event" @sendCommentData="_sendCommentData">
+    </CommentMasker>
   </view>
 </template>
 
 <script>
 import uParse from '../../components/gaoyia-parse/parse';
 import marked from 'marked'
-
 export default {
   name: "articleDetail.vue",
   components: {
@@ -77,12 +77,15 @@ export default {
     return {
       articleData: null,
       showPopup: false,
-      commentList:[]
+      commentList: [],
+      replyData: {}
     }
   },
   methods: {
     async _getArticleDetail () {
-      const data = await this.$http.get_article_detail({ article_id: this.articleData._id });
+      const data = await this.$http.get_article_detail({
+        article_id: this.articleData._id
+      });
       this.articleData = data
     },
     // 打开弹窗
@@ -92,16 +95,37 @@ export default {
     },
     // 发送评论内容到后端
     async _sendCommentData (content) {
-      const { msg } = await this.$http.update_comment({ userId: this.userInfo._id, articleId: this.articleData._id, content })
+      const {
+        msg
+      } = await this.$http.update_comment({
+        userId: this.userInfo._id,
+        articleId: this.articleData._id,
+        content,
+        ...this.replyData   // 扩展当前是否为回复指定评论内容
+      })
       uni.showToast({
         title: msg
       })
       this.showPopup = false;
+      this._getCommentList();
+      this.replyData = {};
     },
     /* 获取评论内容 */
     async _getCommentList () {
-      const res = await this.$http.get_comments({ articleId: this.articleData._id })
+      const res = await this.$http.get_comments({
+        articleId: this.articleData._id
+      })
       this.commentList = res
+    },
+    /* 处理回复事件函数 */
+    commnetReply (data) {
+      this.replyData = {
+        "comment_id": data.comment.comment_id,
+        is_reply: data.isReply
+      }
+      // 当前为回复内容的时候添加回复的ID
+      data.comment.reply_id && (this.replyData.reply_id = data.comment.reply_id)
+      this.openMaskerComment()
     }
   },
   computed: {
