@@ -70,7 +70,7 @@ export default {
     uParse
   },
   onLoad (...options) {
-    this.articleData = JSON.parse(options[0].params);
+    this.articleData = this.$Router.currentRoute.query.params
     this._getArticleDetail();
     /* 获取评论列表 */
     this._getCommentList();

@@ -80,7 +80,8 @@ export default {
       /* 添加参数传递 */
       const { _id, title, author, create_time, thunbs_up_count, browse_count } = this.item
       const params = { _id, title, author, create_time, thunbs_up_count, browse_count };
-      uni.navigateTo({url: `../../pages/articleDetail/articleDetail?params=${JSON.stringify(params)}`})
+      // 手动转换为绝对路径
+      uni.navigateTo({url: `/pages/articleDetail/articleDetail?params=${JSON.stringify(params)}`})
       // 发送收藏自定义事件
       this.$emit('saveHistory')
     }

@@ -11,6 +11,9 @@
             "style": {
                 "navigationBarTitleText": "关注",
                 "enablePullDownRefresh": false
+            },
+            "meta": {
+                "needLogin": true
             }
         },
         {
@@ -39,26 +42,24 @@
             "style": {
                 "navigationBarTitleText": "用户登录",
                 "enablePullDownRefresh": false
-            }
+            },
+            "name": "login"
         }
-        
-        ,{
-            "path" : "pages/articleDetail/articleDetail",
-            "style" :                                                                                    
-            {
+
+        , {
+            "path": "pages/articleDetail/articleDetail",
+            "style": {
                 "navigationBarTitleText": "文章详情",
                 "enablePullDownRefresh": false
             }
-            
-        }
-        ,{
-            "path" : "pages/commentList/commentList",
-            "style" :                                                                                    
-            {
+
+        }, {
+            "path": "pages/commentList/commentList",
+            "style": {
                 "navigationBarTitleText": "评论列表",
                 "enablePullDownRefresh": false
             }
-            
+
         }
     ],
     "globalStyle": {

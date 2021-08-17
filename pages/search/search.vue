@@ -20,7 +20,7 @@
     </view>
     <!-- 开始进行搜索的操作 -->
     <view v-else class="search-list-container">
-      <ListItem  @saveHistory="saveHistory" :isShowLoading="isShowLoading" :articleList="searchList" @loadmore="loadmore" v-if="searchList.length"></ListItem>
+      <ListItem  @saveHistory="saveHistory" :isShowLoading="isShowLoading" :articleList="searchList" v-if="searchList.length"></ListItem>
       <view v-else class="no-data">没有搜索到相关数据</view>
     </view>
   </view>

@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "关注",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "list-item": "/components/ListItem/ListItem"
+  }
 }
