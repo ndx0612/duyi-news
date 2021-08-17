@@ -23,12 +23,12 @@ exports.main = async (event, context) => {
   }
 
   // 处理用户字段
-  await await db.collection('user').doc(userId).update({
+   await db.collection('user').doc(userId).update({
     thumbs_up_article_ids: tempArr
   })
 
   // 处理文章数量字段
-  await await db.collection('article').doc(articleId).update({
+   await db.collection('article').doc(articleId).update({
     thumbs_up_count: dbCmd.inc(thumbsNumber)
   })
 
