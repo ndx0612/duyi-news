@@ -44,7 +44,7 @@
         <uni-icons type="compose" size="16" color="#f07373"></uni-icons>
       </view>
       <view class="detail-bottom-icons">
-        <view class="detail-bottom-icon-box">
+        <view class="detail-bottom-icon-box" @click="goCommentPage">
           <uni-icons type="chat" size="22" color="#f07373"></uni-icons>
         </view>
         <!-- 引入公共组件 -->
@@ -148,9 +148,9 @@ export default {
     },
     // 修改点赞状态
     async _updateCompliments () {
-       // 用户检测
+      // 用户检测
       await this.checkedIsLogin()
-      
+
       const { msg } = await this.$http.update_compliments({ articleId: this.articleData._id, userId: this.userInfo._id })
       msg && uni.showToast({
         title: msg,
@@ -165,6 +165,12 @@ export default {
         thumbsArr.push(this.articleData._id)
       }
       this.updateUserInfo({ ...this.userInfo, thumbs_up_article_ids: thumbsArr })
+    },
+    // 跳转到评论列表界面
+    goCommentPage () {
+      uni.navigateTo({
+        url: `/pages/commentList/commentList?articleId=${this.articleData._id}`
+      })
     }
   },
   computed: {

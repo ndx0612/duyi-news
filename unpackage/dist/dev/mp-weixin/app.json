@@ -6,7 +6,8 @@
     "pages/search/search",
     "pages/labelAdmin/labelAdmin",
     "pages/userInfo/login/login",
-    "pages/articleDetail/articleDetail"
+    "pages/articleDetail/articleDetail",
+    "pages/commentList/commentList"
   ],
   "subPackages": [],
   "window": {
@@ -40,6 +41,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }
