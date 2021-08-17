@@ -9,9 +9,9 @@ export default {
   name: "SaveLikes",
   props: {
     item: Object,
-    size:{
-      type:String,
-      default:'20'
+    size: {
+      type: String,
+      default: '20'
     }
   },
   data () {
@@ -36,7 +36,11 @@ export default {
   },
   computed: {
     isLike () {
-      return this.userInfo && this.userInfo.article_likes_ids.includes(this.item._id)
+      try {
+        return this.userInfo && this.userInfo.article_likes_ids.includes(this.item._id)
+      } catch (e) {
+        return false
+      }
     }
   }
 }

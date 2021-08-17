@@ -51,7 +51,7 @@
         <SaveLikes size="22" class="detail-bottom-icon-box" :item="articleData">
         </SaveLikes>
         <view class="detail-bottom-icon-box">
-          <uni-icons type="hand-thumbsup" size="22" color="#f07373"></uni-icons>
+          <uni-icons :type=" isCompliments ?  'hand-thumbsup-filled' : 'hand-thumbsup'" size="22" color="#f07373" @click="_updateCompliments"></uni-icons>
         </view>
       </view>
     </view>
@@ -141,10 +141,30 @@ export default {
       let followIds = [...this.userInfo.author_likes_ids]
       if (followIds.includes(this.articleData.author.id)) {
         followIds = followIds.filter(item => item != this.articleData.author.id)
-      }else {
+      } else {
         followIds.push(this.articleData.author.id)
       }
-      this.updateUserInfo({...this.userInfo,author_likes_ids:followIds})
+      this.updateUserInfo({ ...this.userInfo, author_likes_ids: followIds })
+    },
+    // 修改点赞状态
+    async _updateCompliments () {
+       // 用户检测
+      await this.checkedIsLogin()
+      
+      const { msg } = await this.$http.update_compliments({ articleId: this.articleData._id, userId: this.userInfo._id })
+      msg && uni.showToast({
+        title: msg,
+      })
+      // 修改用户信息
+      let thumbsArr = [...this.userInfo.thumbs_up_article_ids]
+      if (thumbsArr.includes(this.articleData._id)) {
+        this.articleData.thumbs_up_count -= 1
+        thumbsArr = thumbsArr.filter(item => item != this.articleData._id)
+      } else {
+        this.articleData.thumbs_up_count += 1
+        thumbsArr.push(this.articleData._id)
+      }
+      this.updateUserInfo({ ...this.userInfo, thumbs_up_article_ids: thumbsArr })
     }
   },
   computed: {
@@ -156,8 +176,19 @@ export default {
       }
     },
     //是否关注作者
-    isFollowAuthor() {
-      return this.userInfo && this.userInfo.author_likes_ids.includes(this.articleData.author.id)
+    isFollowAuthor () {
+      try {
+        return this.userInfo && this.userInfo.author_likes_ids.includes(this.articleData.author.id)
+      } catch (e) {
+        return false
+      }
+    },
+    isCompliments () {
+      try {
+        return this.userInfo && this.userInfo.thumbs_up_article_ids.includes(this.articleData._id)
+      } catch (e) {
+        return false
+      }
     }
   }
 }

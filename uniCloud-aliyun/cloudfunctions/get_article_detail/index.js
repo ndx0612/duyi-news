@@ -1,7 +1,13 @@
 'use strict';
 const db = uniCloud.database();
+const dbCmd = db.command;
 exports.main = async (event, context) => {
   const { article_id } = event;
+  
+  // 每次请求进行+1操作
+  await db.collection('article').update({
+	  browse_count:dbCmd.inc(1)
+  })
 
   const articleList = await db.collection('article')
     .aggregate()
@@ -9,7 +15,7 @@ exports.main = async (event, context) => {
       _id: article_id
     })
     .project({
-      comments: 0
+      comments: 0,
     })
     .end();
 
