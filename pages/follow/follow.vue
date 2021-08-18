@@ -36,7 +36,7 @@ export default {
     uni.$on('updateArticle',(e)=> {
       this._getFollowArticle();
     })
-    // todo 修改关注的作者，进行从新请求函数
+    // todo 修改关注的作者，进行从新请求函数 
     uni.$on('updateAuthor',(e)=> {
       this._getAuthorList();
     })

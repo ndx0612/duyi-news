@@ -236,7 +236,7 @@ var _default =
     uni.$on('updateArticle', function (e) {
       _this._getFollowArticle();
     });
-    // todo 修改关注的作者，进行从新请求函数
+    // todo 修改关注的作者，进行从新请求函数 
     uni.$on('updateAuthor', function (e) {
       _this._getAuthorList();
     });
