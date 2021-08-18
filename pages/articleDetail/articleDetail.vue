@@ -34,7 +34,6 @@
         </view>
         <view class="no-data" v-if="!commentList.length">暂无评论</view>
       </view>
-
     </view>
 
     <!-- 评论编写组件 -->
@@ -70,7 +69,7 @@ export default {
     uParse
   },
   onLoad (...options) {
-    this.articleData = this.$Router.currentRoute.query.params
+    this.articleData = this.$Router.currentRoute.query
     this._getArticleDetail();
     /* 获取评论列表 */
     this._getCommentList();

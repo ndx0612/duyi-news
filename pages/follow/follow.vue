@@ -9,12 +9,14 @@
     <!-- 内容切换区域 -->
     <view class="follow-list-container">
       <swiper class="follow-list-swiper" :current="currentIndex" @change="currentIndex =$event.detail.current">
-        <swiper-item>
+        <swiper-item :class="{'no-data':articleDataNone}">
+          {{articleDataNone && '暂无收藏的文章'}}
+          <!-- <view v-show="articleDataNone"  class="no-data"> {{articleDataNone ? '暂无收藏的文章' : 123}}</view> -->
           <ListItem :isShowLoading="isShowLoading" :articleList="articleList" v-if="articleList.length"></ListItem>
-          <view v-if="articleDataNone"  class="no-data">暂无收藏的文章</view>
         </swiper-item>
         <swiper-item>
-          <AuthorList :authorList="authorList"></AuthorList>
+          <AuthorList :authorList="authorList" v-if="authorList.length"></AuthorList>
+          <view v-if="authorDataNone" class="no-data">暂无关注的作者</view>
         </swiper-item>
       </swiper>
     </view>
@@ -33,12 +35,12 @@ export default {
     }
     // #endif
     // todo 没有这个历史记录栈的时候不会触发这个事件
-    uni.$on('updateArticle',(e)=> {
-      this._getFollowArticle();
+    uni.$on('updateArticle', (e) => {
+      this._getFollowArticle('noLoading');
     })
     // todo 修改关注的作者，进行从新请求函数 
-    uni.$on('updateAuthor',(e)=> {
-      this._getAuthorList();
+    uni.$on('updateAuthor', (e) => {
+      this._getAuthorList('noLoading');
     })
 
     this._getFollowArticle();
@@ -49,24 +51,31 @@ export default {
       currentIndex: 0,
       articleList: [],
       isShowLoading: false,
-      articleDataNone:false,
-      authorDataNone:false,
-      authorList:[],
-      
+      articleDataNone: '',
+      authorDataNone: '',
+      authorList: [],
     }
   },
   methods: {
     // 获取关注文章
-    async _getFollowArticle () {
-      const list = await this.$http.get_follow_article({ userId: this.userInfo._id })
+    async _getFollowArticle (isLoading) {
+      const list = await this.$http.get_follow_article({ userId: this.userInfo._id,isLoading })
+      if (list.length) {
+        this.articleDataNone = ''
+      } else {
+        this.articleDataNone = true
+      }
       this.articleList = list
-      !list.length && (this.articleDataNone = true)
     },
     // 获取关注作者
-    async _getAuthorList() {
-      const list = await this.$http.get_follow_author({userId:this.userInfo._id})
+    async _getAuthorList (isLoading) {
+      const list = await this.$http.get_follow_author({ userId: this.userInfo._id,isLoading })
       this.authorList = list
-      !list.length && (this.authorDataNone = true)
+       if (list.length) {
+        this.authorDataNone = ''
+      } else {
+        this.authorDataNone = true
+      }
     }
   }
 }
