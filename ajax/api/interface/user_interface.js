@@ -29,3 +29,9 @@ export const get_follow_article = data => ajax({
   name:'get_follow_article',
   data
 })
+
+/* 获取关注作者列表 */
+export const get_follow_author = data => ajax({
+  name:'get_follow_author',
+  data
+})

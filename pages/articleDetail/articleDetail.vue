@@ -144,6 +144,7 @@ export default {
       } else {
         followIds.push(this.articleData.author.id)
       }
+      uni.$emit('updateAuthor');
       this.updateUserInfo({ ...this.userInfo, author_likes_ids: followIds })
     },
     // 修改点赞状态

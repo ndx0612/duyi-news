@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     async _changeSaveStatus () {
-      // TODOS 判断用户是否登录
       await this.checkedIsLogin();
       const { msg, newUserInfo } = await this.$http.update_save_like({
         articleId: this.item._id,
@@ -32,6 +31,8 @@ export default {
         icon: 'none'
       })
       this.updateUserInfo({ ...this.userInfo, ...newUserInfo })
+      // 触发followarticle界面从新进行列表数据获取
+      uni.$emit('updateArticle')
     },
   },
   computed: {

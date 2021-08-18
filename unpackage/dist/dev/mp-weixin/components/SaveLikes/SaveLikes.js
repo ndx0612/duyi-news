@@ -158,7 +158,6 @@ var _default =
   },
   methods: {
     _changeSaveStatus: function _changeSaveStatus() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$$http$up, msg, newUserInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-
                   _this.checkedIsLogin());case 2:_context.next = 4;return (
                   _this.$http.update_save_like({
                     articleId: _this.item._id,
@@ -168,7 +167,9 @@ var _default =
                   title: msg,
                   icon: 'none' });
 
-                _this.updateUserInfo(_objectSpread(_objectSpread({}, _this.userInfo), newUserInfo));case 9:case "end":return _context.stop();}}}, _callee);}))();
+                _this.updateUserInfo(_objectSpread(_objectSpread({}, _this.userInfo), newUserInfo));
+                // 触发followarticle界面从新进行列表数据获取
+                uni.$emit('updateArticle');case 10:case "end":return _context.stop();}}}, _callee);}))();
     } },
 
   computed: {

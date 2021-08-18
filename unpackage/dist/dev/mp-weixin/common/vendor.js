@@ -11388,7 +11388,7 @@ function createAnimation(option, _this) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.get_follow_article = exports.update_compliments = exports.update_follow_author = exports.get_code = exports.user_login = void 0;var _http = _interopRequireDefault(__webpack_require__(/*! ../../http.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.get_follow_author = exports.get_follow_article = exports.update_compliments = exports.update_follow_author = exports.get_code = exports.user_login = void 0;var _http = _interopRequireDefault(__webpack_require__(/*! ../../http.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // 用户登录
 var user_login = function user_login(data) {return (0, _http.default)({
@@ -11417,7 +11417,13 @@ var update_compliments = function update_compliments(data) {return (0, _http.def
 /* 获取关注的文章 */exports.update_compliments = update_compliments;
 var get_follow_article = function get_follow_article(data) {return (0, _http.default)({
     name: 'get_follow_article',
-    data: data });};exports.get_follow_article = get_follow_article;
+    data: data });};
+
+
+/* 获取关注作者列表 */exports.get_follow_article = get_follow_article;
+var get_follow_author = function get_follow_author(data) {return (0, _http.default)({
+    name: 'get_follow_author',
+    data: data });};exports.get_follow_author = get_follow_author;
 
 /***/ }),
 
@@ -12785,7 +12791,7 @@ var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 25));func
 
 var router = (0, _uniSimpleRouter.createRouter)({
   platform: "mp-weixin",
-  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/follow/follow","meta":{"needLogin":true}},{"path":"/pages/self/self"},{"path":"/pages/search/search"},{"path":"/pages/labelAdmin/labelAdmin"},{"path":"/pages/userInfo/login/login","name":"login"},{"path":"/pages/articleDetail/articleDetail"},{"path":"/pages/commentList/commentList"}]) });
+  routes: _toConsumableArray([{"path":"/pages/index/index","aliasPath":"/"},{"path":"/pages/follow/follow"},{"path":"/pages/self/self"},{"path":"/pages/search/search"},{"path":"/pages/labelAdmin/labelAdmin"},{"path":"/pages/userInfo/login/login","name":"login"},{"path":"/pages/articleDetail/articleDetail"},{"path":"/pages/commentList/commentList"}]) });
 
 
 
