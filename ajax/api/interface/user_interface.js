@@ -35,3 +35,10 @@ export const get_follow_author = data => ajax({
   name:'get_follow_author',
   data
 })
+
+/* 获取作者自己的文章 */
+
+export const get_my_article = data => ajax({
+  name:'get_my_article',
+  data
+})

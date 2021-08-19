@@ -7,7 +7,8 @@
     "pages/labelAdmin/labelAdmin",
     "pages/userInfo/login/login",
     "pages/articleDetail/articleDetail",
-    "pages/commentList/commentList"
+    "pages/commentList/commentList",
+    "pages/myArticle/myArticle"
   ],
   "subPackages": [],
   "window": {

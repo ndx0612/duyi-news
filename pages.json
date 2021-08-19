@@ -60,6 +60,16 @@
                 "enablePullDownRefresh": false
             }
 
+        }, {
+            "path": "pages/myArticle/myArticle",
+            "style": {
+                "navigationBarTitleText": "我的文章",
+                "enablePullDownRefresh": false
+            },
+            "meta": {
+                "needLogin": true
+            }
+
         }
     ],
     "globalStyle": {
