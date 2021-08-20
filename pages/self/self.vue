@@ -6,7 +6,7 @@
         <image :src="userInfo.avatar" mode="aspectFill"></image>
       </view>
       <view class="my-header-logo">
-        <view class="my-header-logo-box">
+        <view class="my-header-logo-box" @click="changeAvatar">
           <image :src="userInfo.avatar" mode="aspectFill"></image>
         </view>
         <text class="user-name">{{userInfo.author_name}}</text>
@@ -42,7 +42,7 @@
         </view>
         <uni-icons type="arrowright" size="14" color="#666"></uni-icons>
       </view>
-      <view class="my-content-list">
+      <view class="my-content-list" @click="goFeedbackPage">
         <view class="my-content-list-title">
           <uni-icons class="icons" type="help" size="16" color="#666"></uni-icons>
           <text>意见反馈</text>
@@ -146,6 +146,38 @@ export default {
       uni.navigateTo({
         url: '/pages/myArticle/myArticle'
       })
+    },
+    //!跳转到意见反馈界面
+    goFeedbackPage () {
+      uni.navigateTo({
+        url: '/pages/feedback/feedback'
+      })
+    },
+    // 修改用户图片
+    changeAvatar () {
+      uni.chooseImage({
+        count: 1,
+        success: async res => {
+          const filePath = await this._uploadFile(res.tempFilePaths[0], res.tempFiles[0].name)
+          await this._updateUserAvatar(filePath)
+        }
+      })
+    },
+    async _uploadFile (filePath, cloudPath) {
+      const { fileID } = await uniCloud.uploadFile({
+        filePath,
+        cloudPath
+      })
+      return fileID
+    },
+    // 上传图片内容
+    async _updateUserAvatar (filePath) {
+      const { msg } = await this.$http.update_user_avatar({
+        userId: this.userInfo._id,
+        filePath,
+      })
+      uni.showToast({ title: msg, icon: 'none' })
+      this.updateUserInfo({...this.userInfo, avatar:filePath});
     }
   }
 }

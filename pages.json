@@ -44,23 +44,22 @@
                 "enablePullDownRefresh": false
             },
             "name": "login"
-        }
-
-        , {
+        },
+        {
             "path": "pages/articleDetail/articleDetail",
             "style": {
                 "navigationBarTitleText": "文章详情",
                 "enablePullDownRefresh": false
             }
-
-        }, {
+        },
+        {
             "path": "pages/commentList/commentList",
             "style": {
                 "navigationBarTitleText": "评论列表",
                 "enablePullDownRefresh": false
             }
-
-        }, {
+        },
+        {
             "path": "pages/myArticle/myArticle",
             "style": {
                 "navigationBarTitleText": "我的文章",
@@ -69,7 +68,16 @@
             "meta": {
                 "needLogin": true
             }
-
+        },
+        {
+            "path": "pages/feedback/feedback",
+            "style": {
+                "navigationBarTitleText": "意见反馈",
+                "enablePullDownRefresh": false
+            },
+            "meta": {
+                "needLogin": true
+            }
         }
     ],
     "globalStyle": {
