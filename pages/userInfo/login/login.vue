@@ -48,8 +48,8 @@ export default {
     return {
       type: 'account',
       formData: {
-        loginName: '',
-        password: '',
+        loginName: 'admin123',
+        password: 'admin123',
         phone: "",
         vCode: '',
       },
