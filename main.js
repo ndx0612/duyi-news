@@ -8,6 +8,9 @@ Vue.use(commonMixin)
 Vue.use(userMixin)
 Vue.config.productionTip = false
 
+import uView from 'uview-ui';
+Vue.use(uView);
+
 /* 路由组件扩展 */
 import { router, RouterMount } from './router'
 Vue.use(router)
