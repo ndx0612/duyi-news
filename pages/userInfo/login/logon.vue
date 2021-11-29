@@ -1,17 +1,15 @@
 <template>
 	<view>
 		<view>
-			<!-- 			<u-form :model="form" ref="uForm">
+			<u-form :model="form" ref="uForm">
 				<u-form-item label="账号" :label-width="labelWidth" :label-align="labelAlign">
 					<u-input v-model="form.name" placeholder="请输入账号"></u-input>
 				</u-form-item>
-				<u-form-item label="确认密码" :label-width="labelWidth" :label-align="labelAlign">
+				<u-form-item label="密码" :label-width="labelWidth" :label-align="labelAlign">
 					<u-input v-model="form.password" placeholder="请输入密码" :type="pwd"></u-input>
 				</u-form-item>
-			</u-form> -->
-			<u-button class="btn" type="error" @click="logon">调用方式1</u-button>
-			<u-button class="btn" type="error" @click="promise">调用方式2</u-button>
-			<u-button class="btn" type="error" @click="del_btn">删除记录</u-button>
+			</u-form>
+			<u-button class="btn" type="error" @click="logon">注册</u-button>
 		</view>
 	</view>
 </template>
@@ -34,32 +32,10 @@
 		},
 		methods: {
 			logon() {
-				// 调用方法
 				uniCloud.callFunction({
-					name: "add_user",
+					name: "user_logon", // 函数名称
 					data: {
-						username: "Doinb",
-						age: 24
-					},
-					success: (res) => {
-						console.log(res.result);
-					}
-				})
-			},
-			promise() {
-				uniCloud.callFunction({
-					name: "get_user",
-					success: (res) => {
-						console.log(res.result);
-					}
-				})
-			},
-			del_btn() {
-				// 删除方法
-				uniCloud.callFunction({
-					name: 'del_user',
-					data: {
-						username: "Doinb"
+						from: this.form
 					},
 					success: (res) => {
 						console.log(res.result);
