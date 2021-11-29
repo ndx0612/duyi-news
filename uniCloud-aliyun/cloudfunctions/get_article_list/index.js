@@ -6,7 +6,7 @@ exports.main = async (event, context) => {
 		classify,
 		page = 1,
 		pageSize = 10
-	} = event
+	} = event // 传入参数
 
 	let matchObj = {}
 
@@ -25,16 +25,16 @@ exports.main = async (event, context) => {
 		.skip(pageSize * (page - 1)) // 首页从0开始计算
 		.limit(pageSize) // 每页最多返回多少条数据
 		.end()
-		
+
 	const amount = await db.collection('article').where(matchObj).count()
-	
+
 	//返回数据给客户端
 	return {
 		code: 0,
 		msg: "数据请求成功",
 		data: {
-			articleList:list.data,
-			total:amount.total
+			articleList: list.data,
+			total: amount.total
 		},
 	}
 };
